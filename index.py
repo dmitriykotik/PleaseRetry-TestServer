@@ -74,7 +74,7 @@ def start_server():
                 raw_type = m_type & 0x7FFFFFFF
                 if raw_type == 9110:
                     print(f"[!] Substitution 9110")
-                    patched_data = smart_patch(data)
+                    patched_data = patch(data)
                     
                     h = struct.pack('<II', 9110 | 0x80000000, len(patched_data))
                     conn.sendall(h + patched_data)
@@ -83,7 +83,7 @@ def start_server():
                     h2 = struct.pack('<II', 9105 | 0x80000000, len(update_payload))
                     conn.sendall(h2 + update_payload)
                 else:
-                    print(raw_type)
+                    print("[+] MSG Type: " + raw_type)
                     conn.sendall(header + data)
         except Exception as e: 
             pass
