@@ -1,0 +1,33 @@
+syntax = "proto2";
+
+message PlayerCommendationInfo {
+    optional uint32 cmd_friendly = 1;
+    optional uint32 cmd_teaching = 2;
+    optional uint32 cmd_leader = 4;
+}
+
+message AccountActivity {
+    optional uint32 activity = 1;
+    optional uint32 mode = 2;
+    optional uint32 map = 3;
+    optional uint64 matchid = 4;
+}
+
+message PlayerRankingInfo {
+    optional uint32 account_id = 1;
+    optional uint32 rank_id = 2;
+    optional uint32 wins = 3;
+    optional float rank_change = 4;
+    optional uint32 rank_type_id = 6;
+}
+
+message MatchmakingHello {
+    optional uint32 account_id = 1;
+    optional uint32 penalty_seconds = 4;
+    optional uint32 penalty_reason = 5;
+    optional int32 vac_banned = 6;
+    optional PlayerRankingInfo ranking = 7;
+	optional PlayerCommendationInfo commendation = 8;
+    optional int32 player_level = 17;
+    optional int32 player_cur_xp = 18;
+}
